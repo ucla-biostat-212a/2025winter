@@ -40,7 +40,7 @@ See the [schedule](https://ucla-biostat-212a.github.io/2025winter/schedule/sched
 
 ## Course Webpage
 
-[github](https://github.com/ucla-biostat-212a/2025winter)
+<https://ucla-biostat-212a.github.io/2025winter/>
 
 ## Course Materials
 
