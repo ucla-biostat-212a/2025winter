@@ -12,19 +12,23 @@ Course announcements will be sent via BruinLearn.
 
 Office hours will be on Zoom (the same Zoom link as lectures)
 
-# TA Schedule 
+# TA  
 
-TA Contacts: 
+## TA Contacts: 
 
 - James Papadopoulos, Email: <jmpapadopoulos@ucla.edu>
 
 - Yingxing Zhang, Email: <yingxinzz@ucla.edu>
 
-Schedule:
+## TA Schedule:
+
+
+
+# Instructor Office Hour 
 
 1. Tuesday after class 7:30 - 8:30pm. Zoom: <https://ucla.zoom.us/j/95442296743>
 
-2. Night before HW is due. Variable time (likely 6-7pm) and Zoom link.
+2. May provide additional OH before HW is due. Variable time.
 
 
 Books:
