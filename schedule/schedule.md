@@ -5,37 +5,38 @@ title: Biostat 212A
 
 # Course Schedule
 
-Biostat 212A tentative schedule and handouts (expect frequent updates)
 
 BruinLearn: <https://bruinlearn.ucla.edu/courses/198316>  
 Course announcements will be sent via BruinLearn. 
 
 Office hours will be on Zoom (the same Zoom link as lectures)
 
-# TA  
+- Tuesday after class 7:30 - 8:30pm. 
 
-## TA Contacts: 
+- May provide additional OH before HW is due. Variable time.
+
+
+## TA  
+
+### TA Contacts: 
 
 - James Papadopoulos, Email: <jmpapadopoulos@ucla.edu>
 
 - Yingxing Zhang, Email: <yingxinzz@ucla.edu>
 
-## TA Schedule:
+### TA Schedule:
 
 
 
-# Instructor Office Hour 
-
-1. Tuesday after class 7:30 - 8:30pm. Zoom: <https://ucla.zoom.us/j/95442296743>
-
-2. May provide additional OH before HW is due. Variable time.
-
-
-Books:
+## Books:
 
 - ISL refers to the book _An Introduction to Statistical Learning: with Applications in R_ (2021, 2nd Edition). 
 
 - ESL refers to the book _Elements of Statistical Learning: Data Mining, Inference, and Prediction_ (2009, 2nd Edition). 
+
+
+## Tentative schedule and handouts (expect frequent updates)
+
 
 | Week | Date       | Time           | Location                                   | Lecture                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Homework                                                                                                                                      |
 |------|------------|----------------|--------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
