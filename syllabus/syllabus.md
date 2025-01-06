@@ -82,6 +82,7 @@ There will be no midterm and final exams.
 Grades will be based on 
 
 - Homework and final project (80%):
+
 |         | %          | 
 |--------------|---------------|
 | HW1  | 12% | 
