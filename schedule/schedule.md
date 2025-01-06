@@ -22,7 +22,7 @@ TA Contacts:
 
 Schedule:
 
-1. Wednesday 6-7pm. Zoom: <https://ucla.zoom.us/j/95442296743>
+1. Tuesday after class 7:30 - 8:30pm. Zoom: <https://ucla.zoom.us/j/95442296743>
 
 2. Night before HW is due. Variable time (likely 6-7pm) and Zoom link.
 
