@@ -79,7 +79,9 @@ There will be no midterm and final exams.
 
 ## Final Grade
 
-Grades will be based on homework, final project (80%):
+Grades will be based on 
+
+- Homework and final project (80%):
 
 |         | %          | 
 |--------------|---------------|
@@ -90,7 +92,7 @@ Grades will be based on homework, final project (80%):
 | HW5  | 12% | 
 | Final Project  | 20% | 
 
-And participation (class attendance, pop quizzes, asking questions, and engaging in office hours, 20%).
+- Participation (class attendance, pop quizzes, asking questions, and engaging in office hours, 20%).
 
 ## UCLA ADA Policy 
 
