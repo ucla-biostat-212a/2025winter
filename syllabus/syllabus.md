@@ -29,8 +29,20 @@ title: Biostat 212A
 [Dr. Jin Zhou](https://ph.ucla.edu/about/faculty-staff-directory/jin-zhou)  
 Office: CHS 21-254  
 Email: <jinjinzhou@ucla.edu>  
-Office hours: Tuesday after class, i.e., 7-8 pm, or if there is no class on Tuesday, 5-7 pm
+Office hours: Tuesday after class, i.e., 7:30-8:30 pm, or if there is no class on Tuesday, 5-7 pm
 Zoom link: Same as lectures 
+
+## TA  
+
+### TA Contacts: 
+
+- James Papadopoulos
+   + Email: <jmpapadopoulos@ucla.edu>
+
+- Yingxing Zhang
+  + Email: <yingxinzz@ucla.edu>
+
+### TA Schedule:
 
 ## Course Description
 
@@ -40,7 +52,12 @@ See the [schedule](https://ucla-biostat-212a.github.io/2025winter/schedule/sched
 
 ## Course Webpage
 
-<https://ucla-biostat-212a.github.io/2025winter/>
+- Github: <https://ucla-biostat-212a.github.io/2025winter/>
+
+- BruinLearn: <https://bruinlearn.ucla.edu/courses/198316>  
+
+- Course announcements will be sent via BruinLearn. 
+
 
 ## Course Materials
 

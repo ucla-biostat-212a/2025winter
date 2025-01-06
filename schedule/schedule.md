@@ -5,37 +5,7 @@ title: Biostat 212A
 
 # Course Schedule
 
-
-BruinLearn: <https://bruinlearn.ucla.edu/courses/198316>  
-Course announcements will be sent via BruinLearn. 
-
-Office hours will be on Zoom (the same Zoom link as lectures)
-
-- Tuesday after class 7:30 - 8:30pm. 
-
-- May provide additional OH before HW is due. Variable time.
-
-
-## TA  
-
-### TA Contacts: 
-
-- James Papadopoulos, Email: <jmpapadopoulos@ucla.edu>
-
-- Yingxing Zhang, Email: <yingxinzz@ucla.edu>
-
-### TA Schedule:
-
-
-
-## Books:
-
-- ISL refers to the book _An Introduction to Statistical Learning: with Applications in R_ (2021, 2nd Edition). 
-
-- ESL refers to the book _Elements of Statistical Learning: Data Mining, Inference, and Prediction_ (2009, 2nd Edition). 
-
-
-## Tentative schedule and handouts (expect frequent updates)
+**Tentative (expect frequent updates)**
 
 
 | Week | Date       | Time           | Location                                   | Lecture                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Homework                                                                                                                                      |
