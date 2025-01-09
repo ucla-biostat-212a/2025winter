@@ -47,16 +47,17 @@ print(IPython.sys_info())
 :::
 
 # Brief intro
-- PhD in Biomathematics, UCLA
+- PhD in Biomathematics, UCLA (the department was renamed to ["UCLA Computational Medicine"](https://compmed.ucla.edu/))
 - Postdoc \& Statistician, Harvard University
   + Department of Biostatistics
   + Channing's Lab, Brigham and Women's Hospital
 - Assistant \& Associate professor,  University of Arizona (UofA)
   + Department of Epidemiology and Biostatistics 
   + Statistics and Genetics Graduate Interdisciplinary Program (GIDP)
-- Research principal investigator, Phoenix VA Health Care System}
-- Associate professor, UCLA
+- Research principal investigator, Phoenix VA Health Care System
+- Adjunct Associate Professor, UCLA
   + Department of Medicine Statistics Core (DOMStat)
+- Associate Professor-in-Residence of Biostatistics, UCLA
   + Department of Biostatistics 
 
 
@@ -612,7 +613,7 @@ The Netflix challenge.
     
 ### Example: large language models (LLMs)    
 
-Modern large language models, such as [ChatGPT3](https://chat.openai.com), combine both supervised learning and reinforcement learning [google trends](https://trends.google.com/trends/explore?date=2022-11-01%202024-01-05&geo=US&q=chatgpt&hl=en)
+Modern large language models, such as [ChatGPT o1](https://chat.openai.com), combine both supervised learning and reinforcement learning [google trends](https://trends.google.com/trends/explore?date=2022-11-01%202024-01-05&geo=US&q=chatgpt&hl=en)
 
 ## Statistical learning vs machine learning
 
@@ -675,9 +676,11 @@ A: No single method dominates. One method may prove useful in answering some que
 
 ## Syllabus
 
-- Read [syllabus](https://ucla-econ-425t.github.io/2023winter/syllabus/syllabus.html) and [schedule](https://ucla-econ-425t.github.io/2023winter/schedule/schedule.html) for a tentative list of topics and course logistics.
+- Read [syllabus](https://ucla-biostat-212a.github.io/2025winter/syllabus/syllabus.html) and [schedule](https://ucla-biostat-212a.github.io/2025winter/schedule/schedule.html) for a tentative list of topics and course logistics.
 
 - Homework assignments will be a mix of theoretical/conceptual and applied/computational questions. Although not required, you are highly encouraged to practice literate programming (using Jupyter, Quarto, RMarkdown, or Google Colab) coordinated through Git/GitHub. This will enhance your GitHub profile and make you more appealing on job market.
+
+- Although, I do not require homework submission through Git/Github. Homework submission is through BruinLearn. 
 
 - We will mainly use R in this course.  
 
@@ -923,7 +926,7 @@ $$
 \sum_{k=1}^s a_{ik}b_{kj}.
 $$
 - General rules,
-  + $\mathbf{A}(\mathbf{B} + \mathbf{C}) = \mathbf{A}\mathbf{B} + \mathbf{A}\mathbf{C}$, $(\mathbf{A}+\mathbf{B}) \mathbf{C}) = \mathbf{A}\mathbf{C} + \mathbf{B}\mathbf{C}$
+  + $\mathbf{A}(\mathbf{B} + \mathbf{C}) = \mathbf{A}\mathbf{B} + \mathbf{A}\mathbf{C}$, $(\mathbf{A}+\mathbf{B}) \mathbf{C} = \mathbf{A}\mathbf{C} + \mathbf{B}\mathbf{C}$
   + For any matrix $\mathbf{A}$, $\mathbf{A}^T\mathbf{A}$ will be a square matrix. 
   + The transpose of a matrix product: $(\mathbf{AB})^T=\mathbf{B}^T\mathbf{A}^T$.
 
