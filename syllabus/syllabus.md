@@ -34,15 +34,17 @@ Zoom link: Same as lectures
 
 ## TA  
 
-### TA Contacts: 
-
 - James Papadopoulos
    + Email: <jmpapadopoulos@ucla.edu>
+   + Schedule: Monday 4:30 - 6:00 PM and Friday 11:00 AM - 12:30 PM
 
 - Yingxing Zhang
   + Email: <yingxinzz@ucla.edu>
+  + Schedule: Wednesday 5:30 - 8:30 PM
+  
+  
+- All TA sessions will be held via lecture Zoom. 
 
-### TA Schedule:
 
 ## Course Description
 
