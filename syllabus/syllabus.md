@@ -29,20 +29,21 @@ title: Biostat 212A
 [Dr. Jin Zhou](https://ph.ucla.edu/about/faculty-staff-directory/jin-zhou)  
 Office: CHS 21-254  
 Email: <jinjinzhou@ucla.edu>  
-Office hours: Tuesday after class, i.e., 7:30-8:30 pm, or if there is no class on Tuesday, 5-7 pm
-Zoom link: Same as lectures 
+Office hours: 
+- Tuesday after class, i.e., 7:30-8:30 pm, or if there is no class on Tuesday, 5 - 7 pm
+- Zoom link: same as lectures 
 
 ## TA  
 
 - James Papadopoulos
    + Email: <jmpapadopoulos@ucla.edu>
-   + Schedule: Monday 4:30 - 6:00 PM and Friday 11:00 AM - 12:30 PM
+   + Schedule: **Monday 4:30 - 6:00 PM and Friday 11:00 AM - 12:30 PM**
 
 - Yingxing Zhang
   + Email: <yingxinzz@ucla.edu>
-  + Schedule: Wednesday 5:30 - 8:30 PM
+  + Schedule: **Wednesday 5:30 - 8:30 PM**
   
-- All TA sessions will be held via lecture Zoom. 
+- All TA sessions will be held **via lecture Zoom**. 
 
 
 ## Course Description
