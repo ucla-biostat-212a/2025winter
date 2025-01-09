@@ -42,7 +42,6 @@ Zoom link: Same as lectures
   + Email: <yingxinzz@ucla.edu>
   + Schedule: Wednesday 5:30 - 8:30 PM
   
-  
 - All TA sessions will be held via lecture Zoom. 
 
 
