@@ -1,6 +1,7 @@
 ---
 layout: course
 title: Biostat 212A
+subtitle: Statistical Learning A
 ---
 
 # Course Schedule
