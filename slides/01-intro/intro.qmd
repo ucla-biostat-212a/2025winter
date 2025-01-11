@@ -55,6 +55,7 @@ print(IPython.sys_info())
   + Department of Epidemiology and Biostatistics 
   + Statistics and Genetics Graduate Interdisciplinary Program (GIDP)
 - Research principal investigator, Phoenix VA Health Care System
+- Research principal investigator, Greater Los Angeles VA Health Care System
 - Adjunct Associate Professor, UCLA
   + Department of Medicine Statistics Core (DOMStat)
 - Associate Professor-in-Residence of Biostatistics, UCLA
