@@ -43,6 +43,10 @@ Office hours:
   + Email: <yingxinzz@ucla.edu>
   + Schedule: **Wednesday 5:30 - 8:30 PM**
   
+- Jason Duan (for working professionals) 
+  + Email: <jcwduan1@g.ucla.edu>
+  + Contact Jason for office hours.
+  
 - All TA sessions will be held **via lecture Zoom**. 
 
 
