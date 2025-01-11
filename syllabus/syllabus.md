@@ -9,8 +9,8 @@ title: Biostat 212A
 
 | Week | Date       | Time           | Location                                   |
 |------|------------|----------------|--------------------------------------------|
-| 1    | Sat Jan 11 | 8:30am-11:50pm | [Zoom](https://ucla.zoom.us/j/95442296743) |
-|      | Sun Jan 12 | 8:30am-11:50pm | [Zoom](https://ucla.zoom.us/j/95442296743) |
+| 1    | Sat Jan 11 | 8:30am-11:50pm | ~CHS 43-105~[Zoom](https://ucla.zoom.us/j/95442296743) |
+|      | Sun Jan 12 | 8:30am-11:50pm | ~CHS 43-105~[Zoom](https://ucla.zoom.us/j/95442296743) |
 | 2    | Tue Jan 21 | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
 | 3    | Tue Jan 28 | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
 | 4    | Feb Jan 30 | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
