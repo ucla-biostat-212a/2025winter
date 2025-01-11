@@ -13,15 +13,15 @@ title: Biostat 212A
 |      | Sun Jan 12 | 8:30am-11:50pm | ~~CHS 43-105~~ [Zoom](https://ucla.zoom.us/j/95442296743) |
 | 2    | Tue Jan 21 | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
 | 3    | Tue Jan 28 | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
-| 4    | Feb Jan 30 | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
+| 4    | Tue Jan 30 | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
 | 5    | Tue Feb 4  | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
 | 6    | Sat Feb 8  | 8:30am-11:50pm | CHS 33-105                                 |
 |      | Sun Feb 9  | 8:30am-11:50pm | CHS 33-105                                 |
 | 7    | Tue Feb 18 | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
 | 8    | Tue Feb 25 | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
 | 9    | Tue Mar 4  | 5pm-7:30pm     | [Zoom](https://ucla.zoom.us/j/95442296743) |
-| 10   | Tue Mar 8  | 8:30am-11:50pm | CHS 73-105                                 |
-|      | Sat Mar 9  | 8:30am-11:50pm | CHS 73-105                                 |
+| 10   | Sat Mar 8  | 8:30am-11:50pm | CHS 73-105                                 |
+|      | Sun Mar 9  | 8:30am-11:50pm | CHS 73-105                                 |
 
 
 ## Instructor
