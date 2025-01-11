@@ -73,7 +73,7 @@ Class attendance to both in-person and Zoom lectures is **mandatory**.
 
 ## Homework
 
-There will be at least 6 homework assignments throughout the quarter.  
+There will be at least 5 homework assignments and 1 final project (i.e., long HW) throughout the quarter.  
 
 ## Exam
 
