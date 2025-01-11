@@ -1,6 +1,6 @@
 ---
 title: "Biostat 212a Homework 1"
-subtitle: "Due Jan 23, 2024 @ 11:59PM"
+subtitle: "Due Jan 28, 2025 @ 11:59PM"
 author: "YOUR NAME and UID"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 format:
@@ -22,7 +22,7 @@ knitr:
     cache: false
 ---
 
-## Filling gaps in lecture notes (10pts)
+## Filling gaps in lecture notes (10% pts)
 
 Consider the regression model
 $$
@@ -53,18 +53,18 @@ $$
 $$
 where the expectation averages over the variability in $y_0$ and $\hat f$.
 
-## ISL Exercise 2.4.3 (10pts)
+## ISL Exercise 2.4.3 (10% pts)
 
 ```{r, eval = F}
 library(tidyverse)
 fit <- lm(sales ~ TV, data = )
 ```
 
-## ISL Exercise 2.4.4 (10pts)
+## ISL Exercise 2.4.4 (10% pts)
 
 
 
-## ISL Exercise 2.4.10 (30pts)
+## ISL Exercise 2.4.10 (30% pts)
 
 Your can read in the `boston` data set directly from url <https://raw.githubusercontent.com/ucla-biostat-212a/2024winter/master/slides/data/Boston.csv>. A documentation of the `boston` data set is [here](https://www.rdocumentation.org/packages/ISLR2/versions/1.3-2/topics/Boston).
 
@@ -95,11 +95,11 @@ Boston
 
 :::
 
-## ISL Exercise 3.7.3 (12pts)
+## ISL Exercise 3.7.3 (20% pts)
 
-## ISL Exercise 3.7.15 (20pts)
+## ISL Exercise 3.7.15 (20% pts)
 
-## Bonus question (20pts)
+## Bonus question (20% pts)
 
 For multiple linear regression, show that $R^2$ is equal to the correlation between the response vector $\mathbf{y} = (y_1, \ldots, y_n)^T$ and the fitted values $\hat{\mathbf{y}} = (\hat y_1, \ldots, \hat y_n)^T$. That is
 $$
