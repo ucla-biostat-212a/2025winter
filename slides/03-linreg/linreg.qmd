@@ -295,14 +295,19 @@ fit %>%
 
    + We can conclude that in the absence of any advertising, sales will, on average, fall somewhere between 6,130 and 7,935 units. Furthermore, for each $1,000 increase in television advertising, there will be an average increase in sales of between 42 and 53 units.
   
-- **Hypothesis tests on the coefficients**: The most common hypothesis test involves testing the **null** hypothesis of
-\begin{center}
+- **Hypothesis tests on the coefficients**: The most common hypothesis test involves testing the **null** hypothesis,
+
+
+<p style="text-align:center;">
 H$_0$: There is no relationship between $X$  and  $Y$. 
-\end{center}
-vs the **alternative** hypothesis
-\begin{center}
+</p>
+
+  vs the **alternative** hypothesis
+
+<p style="text-align:center;">
 H$_1$: There is some  relationship between $X$  and  $Y$. 
-\end{center}
+</p>
+
   + Mathematically, this corresponds to testing
 $$
 H_0: \beta_1 = 0
@@ -322,7 +327,7 @@ which measures the number of standard deviations that $\beta_1$ is away from 0.
 - **P-value:** Assuming $\beta_1 = 0$, i.e., under the null hypothesis, the probability of observing any number equal to or larger than $|t|$. 
   + Roughly, a small p-value indicates that it is unlikely to observe such a substantial association between the predictor and the response due to chance, in the absence of any real association between the predictor and the response. 
   + Hence, if p-value is small, we can **infer** that there is an association between the predictor and the response. 
-  + The is we reject the null hypothesis and declare a relationship to exist between $X$ and $Y$. 
+  + That is we reject the null hypothesis and declare a relationship to exist between $X$ and $Y$. 
   + How small is small? Typical p-value cutoffs for rejecting the null hypothesis are 5% or 1% (more discussions related to this topic will be discussed later).
 
 ### Assessing the accuracy of the model
