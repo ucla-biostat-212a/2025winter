@@ -296,14 +296,10 @@ fit %>%
    + We can conclude that in the absence of any advertising, sales will, on average, fall somewhere between 6,130 and 7,935 units. Furthermore, for each $1,000 increase in television advertising, there will be an average increase in sales of between 42 and 53 units.
   
 - **Hypothesis tests on the coefficients**: The most common hypothesis test involves testing the **null** hypothesis,
-
-
 <p style="text-align:center;">
 H$_0$: There is no relationship between $X$  and  $Y$. 
 </p>
-
   vs the **alternative** hypothesis
-
 <p style="text-align:center;">
 H$_1$: There is some  relationship between $X$  and  $Y$. 
 </p>
