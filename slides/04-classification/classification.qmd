@@ -577,11 +577,11 @@ plt.show()
 ### Making Predictions
 - After fitting the logistic regression, for an individual $i$, we can compute the probability of `default` using the estimated coefficients:
 $$
-\log \left( \frac{ \hat p(\text{balance}_i, \text{income}_i, \text{student}_i)}{1- \hat p(\text{balance}_i, \text{income}_i, \text{student}_i)} \right) = \hat \beta_0 +  \hat \beta_1 \text{balance}_i +  \hat\beta_2 \text{income}_i + \beta_3 \text{student}_i
+\log \left( \frac{ \hat p(\text{balance}_i, \text{income}_i, \text{student}_i)}{1- \hat p(\text{balance}_i, \text{income}_i, \text{student}_i)} \right) = \hat \beta_0 +  \hat \beta_1 \text{balance}_i +  \hat\beta_2 \text{income}_i +\hat \beta_3 \text{student}_i
 $$
 which is 
 $$
-\hat p(\text{default}_i = \text{Yes}\mid \text{balance}_i, \text{income}_i, \text{student}_i) = \frac{e^{\hat \beta_0 +  \hat \beta_1 \text{balance}_i +  \hat\beta_2 \text{income}_i + \beta_3 \text{student}_i}}{1+e^{\hat \beta_0 +  \hat \beta_1 \text{balance}_i +  \hat\beta_2 \text{income}_i + \beta_3 \text{student}_i}}
+\hat p(\text{default}_i = \text{Yes}\mid \text{balance}_i, \text{income}_i, \text{student}_i) = \frac{e^{\hat \beta_0 +  \hat \beta_1 \text{balance}_i +  \hat\beta_2 \text{income}_i + \hat\beta_3 \text{student}_i}}{1+e^{\hat \beta_0 +  \hat \beta_1 \text{balance}_i +  \hat\beta_2 \text{income}_i + \hat\beta_3 \text{student}_i}}
 $$
 then classify the individual to `default` if $\hat p(\text{balance}_i, \text{income}_i, \text{student}_i) > 0.5$.
 
