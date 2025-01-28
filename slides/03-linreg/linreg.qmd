@@ -418,6 +418,9 @@ library(gtsummary)
 # Linear regression
 lmod <- lm(sales ~ TV + radio + newspaper, data = Advertising)
 summary(lmod)
+```
+
+```{r}
 # Better summary table
 lmod %>%
   tbl_regression() %>%
