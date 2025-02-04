@@ -367,8 +367,14 @@ logit_mod <- glm(
   data = Default
   )
 summary(logit_mod)
-# logit_mod %>% tbl_regression()
+```
 
+```{r}
+ logit_mod %>% tbl_regression(exponentiate = TRUE)
+```
+
+
+```{r}
 # Predicted labels from logistic regression
 logit_pred = ifelse(
   predict(logit_mod, Default, type = "response") > 0.5,
