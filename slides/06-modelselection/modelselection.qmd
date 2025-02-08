@@ -412,10 +412,10 @@ norm_recipe <-
   # zero-variance filter
   step_zv(all_predictors()) %>% 
   # center and scale numeric data
-  step_normalize(all_predictors()) %>%
+  step_normalize(all_predictors()) # %>%
   # step_log(Salary, base = 10) %>%
   # estimate the means and standard deviations
-  prep(training = Credit, retain = TRUE)
+  # prep(training = Credit, retain = TRUE)
 norm_recipe
 ```
 
@@ -436,6 +436,7 @@ ridge_wf <- workflow() %>%
   add_recipe(norm_recipe)
 ridge_wf
 ```
+
 Fit ridge regression.
 ```{r}
 fit_ridge <- ridge_wf %>% fit(data = Credit)
