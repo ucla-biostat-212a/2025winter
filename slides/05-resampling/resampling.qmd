@@ -179,7 +179,7 @@ Cross-validation was used on the `Auto` data set in order to estimate the test e
 ![](ISL_fig_5_6.pdf){width=600px height=350px}
 </p>
 
-Blue: true test MSE. Black dashed line: LOOCV estimate of test MSE. Orange: 10-fold CV estimate of test MSE. The crosses indicate the minimum of each of the MSE curves. [Left data](https://ucla-biostat-212a.github.io/2024winter/slides/02-statlearn/statlearn.html#fig-tradeoff-truth). [Middle data](https://ucla-biostat-212a.github.io/2024winter/slides/02-statlearn/statlearn.html#fig-tradeoff-smooth-truth). [Right data](https://ucla-biostat-212a.github.io/2024winter/slides/02-statlearn/statlearn.html#fig-tradeoff-wiggly-truth).
+Blue: true test MSE. Black dashed line: LOOCV estimate of test MSE. Orange: 10-fold CV estimate of test MSE. The crosses indicate the minimum of each of the MSE curves. [Left data](https://ucla-biostat-212a.github.io/2025winter/slides/02-statlearn/statlearn.html#fig-tradeoff-truth). [Middle data](https://ucla-biostat-212a.github.io/2025winter/slides/02-statlearn/statlearn.html#fig-tradeoff-smooth-truth). [Right data](https://ucla-biostat-212a.github.io/2025winter/slides/02-statlearn/statlearn.html#fig-tradeoff-wiggly-truth).
 
 :::
 
@@ -367,7 +367,14 @@ train <- sample(392, 196)
 ```
 
 
--Use the `subset` option in `lm()` to fit a linear regression using only the observations corresponding to the training set.
+- Use the `subset` option in `lm()` to fit a linear regression using only the observations corresponding to the training set.
+
+```{r}
+ggplot(Auto, aes(x = horsepower, y = mpg)) + 
+  geom_point() +
+  geom_smooth()
+```
+
 ```{r}
 lm.fit <- lm(mpg ~ horsepower, data = Auto, subset = train)
 ```
