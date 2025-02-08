@@ -234,10 +234,10 @@ norm_recipe <-
   # zero-variance filter
   step_zv(all_predictors()) %>% 
   # center and scale numeric data
-  step_normalize(all_predictors()) %>%
+  step_normalize(all_predictors()) # %>%
   # step_log(Salary, base = 10) %>%
   # estimate the means and standard deviations
-  prep(training = Hitters_other, retain = TRUE)
+  # prep(training = Hitters_other, retain = TRUE)
 norm_recipe
 ```
 
@@ -336,7 +336,7 @@ Set up the grid for tuning in the range of $10^{-2}-10^3$.
 <https://dials.tidymodels.org/reference/dials-package.html>
 ```{r}
 lambda_grid <-
-  grid_regular(penalty(range = c(-2, 3), trans = log10_trans()), levels = 100)
+  grid_regular(penalty(range = c(-2, 1.5), trans = log10_trans()), levels = 100)
 lambda_grid
 ```
 
@@ -371,8 +371,7 @@ lasso_fit <-
   lr_wf %>%
   tune_grid(
     resamples = folds,
-    grid = lambda_grid
-    )
+    grid = lambda_grid)
 lasso_fit
 ```
 
@@ -392,13 +391,13 @@ lasso_fit %>%
 Show the top 5 models ($\lambda$ values)
 ```{r}
 lasso_fit %>%
-  show_best("rmse")
+  show_best(metric = "rmse")
 ```
 
 Let's select the best model
 ```{r}
 best_lasso <- lasso_fit %>%
-  select_best("rmse")
+  select_best(metric = "rmse")
 best_lasso
 ```
 
@@ -490,7 +489,7 @@ The final prediction RMSE on the test set is
 ```{python}
 from sklearn.metrics import mean_squared_error
 
-mean_squared_error(y_test, search.best_estimator_.predict(X_test), squared = False)
+mean_squared_error(y_test, search.best_estimator_.predict(X_test))
 ```
 
 Test RMSE seems to be a bit off.
