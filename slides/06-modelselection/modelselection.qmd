@@ -28,6 +28,12 @@ Display system information for reproducibility.
 
 ::: {.panel-tabset}
 
+## R
+
+```{r}
+sessionInfo()
+```
+
 ## Python
 
 ```{python}
@@ -35,11 +41,7 @@ import IPython
 print(IPython.sys_info())
 ```
 
-## R
 
-```{r}
-sessionInfo()
-```
 
 :::
 
