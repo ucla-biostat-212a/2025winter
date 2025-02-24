@@ -49,15 +49,16 @@ The tidymodels framework is a package ecosystem, in which all steps of the machi
 Below you can see the basic machine learning workflow and how it maps to existing packages from tidymodels:
 
 ![](tidymodels_process.svg)
-1. Preprocess: Transform and prepare data for modeling -> recipes
 
-2. Model: Select and specify a model for a specific problem -> parsnip
+1. Preprocess: Transform and prepare data for modeling -> `recipes`
 
-3. Measure: Evaluate the performance of the model -> yardstick
+2. Model: Select and specify a model for a specific problem -> `parsnip`
 
-4. Sample: Split and sample input data to evaluate models -> rsample
+3. Measure: Evaluate the performance of the model -> `yardstick`
 
-5. Tune: Adjust and improve the model on input data -> tune
+4. Sample: Split and sample input data to evaluate models -> `rsample`
+
+5. Tune: Adjust and improve the model on input data -> `tune`
 
 
 ## Overview
