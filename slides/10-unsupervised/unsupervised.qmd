@@ -41,22 +41,9 @@ library(tidymodels)
 library(ISLR2)
 
 ## In order to use MNIST datasets, I installed the keras package and its dependencies
-## It depends on python and tensorflow, so I installed them first
-## I didn't use conda to set up the environment to do it - it doesn't work for me; 
-## So I first uninstalled all the conda packages
-## One first need to set up python environment in R correctly by using reticulate
-## I used the following commands in R
-## devtools::install_github("rstudio/tensorflow")
-## devtools::install_github("rstudio/keras")
-## library(reticulate)
-## library(keras3)
-## library(tensorflow)
-## I also had to go to the (https://github.com/rstudio/keras/issues/649)
-## `Tools` -> `Global Options` -> `Python` -> I selected '~/.virtualenvs/r-reticulate/bin/python`(interpreter) and `~/.virtualenvs/r-reticulate/bin/python3.9` for virtual environment 
-## with this setup I can install and find correct tensorflow
-## tensorflow::install_tensorflow()
-## tensorflow::tf_config()
-
+# set up Tools -> Global Options -> Python -> "~/.virtualenvs/r-tensorflow/bin/python" 
+# reticulate::py_install("IPython")
+# reticulate::py_install("tensorflow")
 library(keras)
 ```
 
