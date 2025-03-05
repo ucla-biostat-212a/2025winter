@@ -1,6 +1,6 @@
 ---
 title: "Biostat 212a Homework 4"
-subtitle: "Due Mar. 4, 2025 @ 11:59PM"
+subtitle: "Due Mar. 8, 2025 @ 11:59PM"
 author: "YOUR NAME and UID"
 date: today
 format:
