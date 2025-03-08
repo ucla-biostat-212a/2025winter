@@ -142,9 +142,9 @@ svm_recipe <-
   # zero-variance filter
   step_zv(all_numeric_predictors()) %>% 
   # center and scale numeric data
-  step_normalize(all_numeric_predictors()) %>%
+  step_normalize(all_numeric_predictors()) # %>%
   # estimate the means and standard deviations
-  prep(training = Heart_other, retain = TRUE)
+  # prep(training = Heart_other, retain = TRUE)
 svm_recipe
 ```
 
@@ -246,14 +246,14 @@ Show the top 5 models.
 
 ```{r}
 svm_fit %>%
-  show_best("roc_auc")
+  show_best(metric = "roc_auc")
 ```
 
 Let's select the best model.
 
 ```{r}
 best_svm <- svm_fit %>%
-  select_best("roc_auc")
+  select_best(metric ="roc_auc")
 best_svm
 ```
 :::
