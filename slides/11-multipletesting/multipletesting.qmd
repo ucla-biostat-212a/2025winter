@@ -1,0 +1,444 @@
+---
+title: "Multiple Testing (ISL 13)"
+subtitle: "Biostat 212A"
+author: "Dr. Jin Zhou @ UCLA"
+date: today
+format:
+  html:
+    theme: cosmo
+    embed-resources: true
+    number-sections: true
+    toc: true
+    toc-depth: 4
+    toc-location: left
+    code-fold: false
+engine: knitr
+knitr:
+  opts_chunk: 
+    fig.align: 'center'
+    # fig.width: 6
+    # fig.height: 4
+    message: FALSE
+    cache: false
+---
+
+Credit: This note heavily uses material from the books [_An Introduction to Statistical Learning: with Applications in R_](https://www.statlearning.com/) (ISL2) and [_Elements of Statistical Learning: Data Mining, Inference, and Prediction_](https://hastie.su.domains/ElemStatLearn/) (ESL2).
+
+Display system information for reproducibility.
+
+::: {.panel-tabset}
+
+
+## R
+
+```{r}
+sessionInfo()
+library(ISLR2)
+library(GGally)
+library(gtsummary)
+library(kernlab)
+library(tidyverse)
+library(tidymodels)
+library(kableExtra)
+```
+
+## Python
+
+```{python}
+import IPython
+print(IPython.sys_info())
+```
+:::
+
+## Motivation 
+- So far in this class, we focused on **estimation** and **prediction**. In this chapter, we instead focus on hypothesis testing, which is key to conducting inference. 
+
+- In contemporary settings, we are often faced with huge amounts of data, and consequently may wish to test a great many null hypotheses.
+
+  + "Omics data" (genomics, proteomics, metabolomics, etc.) often involve testing thousands or even millions of hypotheses.
+  
+  + In the context of A/B testing, we may wish to test many different versions of a website or app.
+  
+  + In the context of causal inference, we may wish to test many different potential causal relationships.
+
+- In linear regression 
+$$
+\mathbf{E}(\textbf{Gene Expression}) = \beta_0 + \beta_1 \textbf{Treatment},
+$$
+
+We test null hypothesis, $\text{H}_0: \beta_i =0$. Rather than just testing 1 hypothesis, we might want to test $m$ null hypotheses,
+
+$$
+\text{H}_{01},\ldots, \text{H}_{0m},
+$$
+
+where $\text{H}_{0j}$: the expected value of the $j$th gene expression in the control group equals the expected value of the $j$th gene expression in the treatment group. 
+
+- When conducting multiple testing, we need to be very careful about how we interpret the results, in order to avoid erroneously rejecting far too many null hypotheses.
+
+## Overview of hypothesis testing
+
+- Hypothesis tests provide a rigorous statistical framework for answering
+simple ``yes-or-no'' questions about data, such as the following:
+
+  1. Is the true coeﬀicient $\beta_j$ in a linear regression of $Y$ onto $X_1,\ldots, X_p$
+      equal to zero? 
+  2. Is there a difference in the expected blood pressure of laboratory mice
+     in the control group and laboratory mice in the treatment group?
+
+
+### Testing a hypothesis
+
+- Step 1: Define the Null and Alternative Hypotheses
+
+  + The null hypothesis, denoted $H_0$, represents a default position that there is no eﬀect or that there is no diﬀerence between groups. 
+  + The alternative hypothesis, denoted $H_a$ or $H_1$, represents the opposite of the null hypothesis. 
+  + If we reject $H_0$, then this provides evidence in favor of $H_a$. We can think of rejecting $H_0$ as making a discovery about our data: namely, we are discovering that $H_0$ does not hold! 
+
+
+- Step 2: Construct the Test Statistic
+
+  + The test statistic is a numerical summary of the data that measures the degree to which the data conﬂict with our null hypothesis. 
+  + For example, in the case of testing whether a coeﬀicient is equal to zero in a linear regression model, the test statistic is the t-statistic.
+  
+  
+- Step 3: Compute the p-Value
+
+  + The **p-value** is defined as the probability of observing a test statistic $\geq$ the observed statistic, under the assumption that $H_0$ is true. 
+  + A small p-value provides evidence against $H_0$.
+  + The null distribution of a test statistic depends on the specific null hypothesis and test statistic used.
+  + Common test statistics typically follow well-known distributions (normal, $t$, $\chi^2$, or $F$) under the null hypothesis, assuming a large enough sample size and other necessary assumptions.
+  + Permutation tests create the null distribution by repeatedly shuffling the data, without relying on standard distributional assumptions.
+
+::: {#fig-pvalue}
+
+<p align="center">
+![](ISL_fig_13_1.pdf){width=500px height=400px}
+</p>
+
+The density function for the $N(0, 1)$ distribution, with the vertical line indicating a value of 2.33. $1\%$ of the area under the curve falls to the right of the vertical line, so there is only a $2\%$ chance of observing a $N(0, 1)$ value
+that is greater than $2.33$ or less than $-2.33$. Therefore, if a test statistic has a
+$N(0,1)$ null distribution, then an observed test statistic of $T = 2.33$ leads to a
+p-value of $0.02$.
+:::
+
+
+
+- Step 4: Make a Decision
+
+  + If the p-value is less than a pre-speciﬁed threshold $\alpha$, then we reject the null hypothesis. 
+  + The threshold $\alpha$ is called the **signiﬁcance level**. 
+  + The most common value for $\alpha$ is $0.05$. 
+  + If the p-value is very small, then we reject the null hypothesis and conclude that there is an association between the variables of interest. 
+  + If the p-value is not small, then we fail to reject the null hypothesis. 
+  + Note that failing to reject the null hypothesis does not imply that the null hypothesis is true. It simply means that the data do not provide strong evidence against the null hypothesis.
+  
+
+### Type I and Type II Errors
+
+::: {#fig-pvalue}
+
+<p align="center">
+![](table_13_1.pdf){width=700px height=200px}
+</p>
+
+A summary of the possible scenarios associated with testing the null hypothesis $H_0$. Type I errors are also known as false positives, and Type II errors as false negatives.
+
+:::
+
+- **Type I error**: Rejecting the null hypothesis when it is actually true. The probability of making a Type I error is denoted by $\alpha$, and is called the **signiﬁcance level** of the test.
+
+- **Type II error**: Failing to reject the null hypothesis when it is actually false. The probability of making a Type II error is denoted by $\beta$.
+
+
+## Multiple Testing
+
+
+```{r}
+set.seed(123)
+
+# Define parameters
+n_genes <- 10000          # Total number of genes/tests
+n_samples <- 20           # Total samples (10 per group)
+group <- rep(c("Control", "Treatment"), each = n_samples / 2)
+
+# Generate a matrix of gene expression data under the null hypothesis
+data <- matrix(rnorm(n_genes * n_samples, mean = 0, sd = 1), nrow = n_genes)
+
+# Introduce a true effect for the first 100 genes
+n_diff <- 100
+data[1:n_diff, group == "Treatment"] <- data[1:n_diff, group == "Treatment"] + 1.5
+
+# Perform a t-test for each gene comparing the two groups
+pvals <- apply(data, 1, function(x) {
+  t.test(x[group == "Control"], x[group == "Treatment"])$p.value
+})
+
+# Adjust the p-values for multiple testing using Benjamini-Hochberg (BH)
+adj_pvals <- p.adjust(pvals, method = "BH")
+
+# Report the number of significant tests at a significance level of 0.05
+cat("Number of significant genes (unadjusted p < 0.05):", sum(pvals < 0.05), "\n")
+# cat("Number of significant genes (BH adjusted p < 0.05):", sum(adj_pvals < 0.05), "\n")
+
+```
+
+```{r}
+truth = c(rep(1, n_diff), rep(0, n_genes - n_diff)) 
+decision = ifelse(pvals < 0.05, 1, 0)
+table(decision, truth) %>% 
+  as_tibble() %>%
+  kbl() %>%
+  kable_styling() 
+```
+
+
+- When you run a lot of tests, some will show small p-values just by chance.
+- Without adjustments, you might wrongly decide that many true null hypotheses are significant.
+- This leads to many false positives (Type I errors).
+- For example, in the above simulation, we have 10000-100 = 9900 true null hypotheses and 483 false positives (Type I errors) at $\alpha = 0.05$.
+- Conclusion: 
+  + Using a p-value threshold of $\alpha$ for one test means the chance of a false positive is controlled at $\alpha$.
+  + If you perform $m$ (e.g., 10000) tests, the chance of having at least one false positive increases.
+  + More tests lead to a higher overall risk of incorrectly rejecting a true null hypothesis.
+
+### Familywise Error Rate (FWER)
+
+- The **familywise error rate (FWER)** is the probability of making one or more Type I errors in a family of tests.
+
+::: {#fig-pvalue}
+
+<p align="center">
+![](table_13_3.pdf){width=700px height=200px}
+</p>
+
+A summary of the results of testing m null hypotheses. A given
+null hypothesis is either true or false, and a test of that null hypothesis can either
+reject or fail to reject it. In practice, the individual values of $V$, $S$, $U$, and $W$ are
+unknown. However, we do have access to $V + S= R$ and $U + W= m− R$, which
+are the numbers of null hypotheses rejected and not rejected, respectively.
+:::
+
+
+$$
+\text{FWER} = P(\text{at least one Type I error}) = P(V \geq 1) = 1 - P(V = 0)
+$$
+- A strategy of rejecting any null hypothesis for which the p-value is below $\alpha$ (i.e. controlling the Type I error for each null hypothesis at level $\alpha$) leads
+to a FWER of
+$$
+\text{FWER} = 1 - P(V = 0) = 1- P(\text{do not fasely reject any null hypothese}) = 1- P(\cap_{j=1}^m \text{do not fasely reject any null hypothese } H_{0j}) 
+$$
+
+- If we make the additional (rather strong) assumptions that the $m$ tests are independent and that all $m$ null hypotheses are true, then
+
+$$
+\text{FWER} = 1- \Pi_{j=1}^m(1-\alpha) = 1 - (1 - \alpha)^m
+$$
+- For example, if we have $m = 10000$ tests and we control the Type I error rate at $\alpha = 0.05$ for each test, then the FWER is $1 - (1 - 0.05)^{10000} \approx 1$.
+
+::: {#fig-pvalue}
+
+<p align="center">
+![](ISL_fig_13_2.pdf){width=600px height=500px}
+</p>
+
+The family-wise error rate, as a function of the number of
+hypotheses tested (displayed on the log scale), for three values of $\alpha$: $\alpha = 0.05$
+(orange), $\alpha = 0.01$ (blue), and $\alpha = 0.001$ (purple). The dashed line indicates
+0.05. For example, in order to control the FWER at 0.05 when testing $m = 50$
+null hypotheses, we must control the Type I error for each null hypothesis at level
+$\alpha = 0.001$.
+:::
+
+## Approaches to Control the Family-Wise Error Rate
+
+- We will illustrate these approaches on the Fund dataset, which records the
+monthly percentage excess returns for $2,000$ fund managers over $n = 50$
+months. 
+
+```{r}
+data(Fund)
+mean_sd <- list(
+  `Mean` = ~round(mean(.x, na.rm = TRUE), 2), 
+  `Standard Deviation` = ~round(sd(.x, na.rm = TRUE), 2),
+  `t statistics` = ~round(mean(.x, na.rm = TRUE) / (sd(.x, na.rm = TRUE) / sqrt(length(.x))),2)
+)
+
+Fund %>% 
+  as_tibble() %>% 
+  select(Manager1: Manager5) %>%
+  summarise(across(Manager1:Manager5, mean_sd)) %>%
+  as.matrix() %>%
+  matrix(., 3, 5) %>%
+  t() %>%
+  as.data.frame() %>%
+  magrittr::set_names(c("Mean", "Standard Deviation", "t statistics")) %>%
+  magrittr::set_rownames(c("Manager1", "Manager2", "Manager3", "Manager4", "Manager5")) %>%
+  mutate(pvals = 2 * pt(-abs(`t statistics`), df = nrow(Fund) - 1)) %>%
+  kbl() %>%
+  kable_styling() 
+```
+
+### Bonferroni Correction
+
+- The **Bonferroni correction** is a simple and conservative approach to control the FWER.
+
+- Suppose we wish to test $H_{01},\ldots, H_{0m}$. Let $A_j$ denote the event that we make a Type I error for the $j$th null hypothesis, for $j = 1, \ldots , m$. Then
+
+$$
+\text{FWER} = P(\text{at least one Type I error}) = P(\cup_{j=1}^m A_j) \leq \sum_{j=1}^m P(A_j) = m \alpha
+$$
+- Therefore, if we control the Type I error for each null hypothesis at level $\alpha/m$, then the FWER is controlled at level $\alpha$.
+
+- The Bonferroni correction is very conservative, especially when $m$ is large. But it is very widely used because it is simple and easy to understand.
+
+### Holm's Method
+
+- **Holm's method** is a step-down procedure that is less conservative than the Bonferroni correction.
+
+- Suppose we have $m$ p-values, $p_{(1)}, \ldots, p_{(m)}$, where $p_{(1)} \leq \ldots \leq p_{(m)}$.
+
+- For $j = 1, \ldots, m$, let $p_{(j)}^*$ denote the $j$th smallest p-value. Then the Holm-adjusted p-values are given by
+
+$$
+p_{(j)}^* = \min((m-j+1) p_{(j)}, 1)
+$$
+- We reject the null hypothesis $H_{0j}$ if $p_{(j)} \leq p_{(j)}^*$.
+
+- Holm's method is more powerful than the Bonferroni correction, but still controls the FWER.
+
+- For example, for the `Fund` dataset, we can use Holm's method to adjust the p-values. We ordered p-values in ascending order,
+
+$$
+0.006,\, 0.01,\, 0.60, \, 0.76, \, 0.92
+$$
+
+So, 
+
+$\quad$  0.006 < 0.05/(5-1+1) = `r 0.05/(5-1+1)`, 
+
+$\quad$  0.01 <  0.05/(5-2+1) = `r 0.05/(5-2+1)`, 
+
+$\quad$  0.60 > 0.05/(5-3+1) = `r 0.05/(5-3+1)`, 
+
+$\quad$  0.76 > 0.05/(5-4+1) = `r 0.05/(5-4+1)`, 
+
+$\quad$  0.92 > 0.05/(5-5+1) = `r 0.05/(5-5+1)`. 
+
+Therefore, we reject the null hypothesis for the first two managers using Homer's method vs using Bonferroni correction, we reject the null hypothesis for the first manager only.
+
+
+::: {#fig-pvalue}
+
+<p align="center">
+![](ISL_fig_13_3.pdf){width=600px height=350px}
+</p>
+
+Each panel displays, for a separate simulation, the sorted
+p-values for tests of $m = 10$ null hypotheses. The p-values corresponding to
+the 2 true null hypotheses are displayed in black, and the rest are in red.
+When controlling the FWER at level 0.05, the Bonferroni procedure rejects all
+null hypotheses that fall below the **black** line, and the Holm procedure rejects all
+null hypotheses that fall below the **blue** line. The region between the blue and black
+lines indicates null hypotheses that are rejected using the Holm procedure but not
+using the Bonferroni procedure. In the center panel, the Holm procedure rejects
+one more null hypothesis than the Bonferroni procedure. In the right-hand panel,
+it rejects five more null hypotheses.
+:::
+
+### Trade-Off Between the FWER and Power 
+
+::: {#fig-pvalue}
+
+<p align="center">
+![](ISL_fig_13_4.pdf){width=600px height=500px}
+</p>
+
+In a simulation setting in which $90\%$ of the $m$ null hypotheses are
+true, we display the power (the fraction of false null hypotheses that we successfully
+reject) as a function of the family-wise error rate. The curves correspond to
+m = 10 (orange), m = 100 (blue), and m = 500 (purple). As the value of $m$
+increases, the power decreases. The vertical dashed line indicates a FWER of
+$0.05$.
+:::
+
+- There is a trade-off between the FWER and the power of the test.
+- As we increase the number of tests $m$, the FWER increases, but the power decreases.
+- This is scientifically uninteresting, and typically results in very low power. 
+- In practice, when m is large, we may be willing to tolerate a few false
+positives, in the interest of making more discoveries, i.e. more rejections of
+the null hypothesis.
+
+
+
+## The False Discovery Rate
+- The ratio $V /R$ is known as the false discovery proportion (FDP).
+
+- The **false discovery rate (FDR)** is an alternative approach to multiple testing that is less conservative than controlling the FWER.
+
+- The FDR is defined as the expected proportion of false positives among the rejected null hypotheses.
+
+$$
+\text{FDR} = E(\text{FDP}) = E\left(\frac{V}{R} \right) 
+$$
+
+- When we control the FDR at (say) level $q = 20\%$, we are rejecting as many null hypotheses as possible while guaranteeing that no more than $20\%$ of those rejected null hypotheses are false positives, on average.
+
+
+### The Benjamini–Hochberg Procedure
+
+::: {#fig-pvalue}
+
+<p align="center">
+![](ISL_alg_13_2.pdf){height=300px width=500px}
+</p>
+
+:::
+
+- For example, consider first 5 managers in the Fund dataset. 
+- In this example, m = 5, although typically we control the FDR in settings involving a much
+greater number of null hypotheses. 
+- We see that 
+
+\begin{align*}
+p(1) = 0.006 < 0.05 × 1/5,\\
+p(2) = 0.012 < 0.05 × 2/5,\\
+p(3) = 0.601 > 0.05 × 3/5,\\
+p(4) = 0.756 > 0.05 × 4/5,\\
+p(5) = 0.918 > 0.05 × 5/5. 
+\end{align*}
+
+- Therefore, to control the FDR at 5%, we reject the null hypotheses that the first and third fund managers
+perform no better than chance.
+
+- As long as the m p-values are independent or only mildly dependent,
+then the BH procedure guarantees that the FDR is controlled at level $q$.
+
+- This holds regardless of how many null hypotheses are true, and regardless
+of the distribution of the p-values for the null hypotheses that are false.
+
+::: {#fig-pvalue}
+
+<p align="center">
+![](ISL_fig_13_6.pdf){height=300px width=500px}
+</p>
+
+Each panel displays the same set of m = 2,000 ordered p-values
+for the Fund data. The green lines indicate the p-value thresholds corresponding
+to FWER control, via the Bonferroni procedure, at levels α = 0.05 (left), α = 0.1
+(center), and α = 0.3 (right). The orange lines indicate the p-value thresholds
+corresponding to FDR control, via Benjamini–Hochberg, at levels q = 0.05 (left),
+q = 0.1 (center), and q = 0.3 (right). When the FDR is controlled at level q = 0.1,
+146 null hypotheses are rejected (center); the corresponding p-values are shown
+in blue. When the FDR is controlled at level q = 0.3, 279 null hypotheses are
+rejected (right); the corresponding p-values are shown in blue.
+:::
+
+
+- The Bonferroni method sets a fixed cutoff of $\alpha/m$ to decide if a test is significant.
+- This cutoff only depends on the number of tests ($m$) and does not change based on the data.
+- The BH method uses a cutoff that depends on all the p-values you observe.
+- With BH, you can’t know the rejection threshold until you see your data.
+- The Holm procedure also uses a data-dependent threshold, similar to BH.
+
+## Summary
