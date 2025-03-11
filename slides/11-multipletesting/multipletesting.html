@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Jin Zhou @ UCLA">
-<meta name="dcterms.date" content="2025-03-09">
+<meta name="dcterms.date" content="2025-03-11">
 
 <title>Multiple Testing (ISL 13)</title>
 <style>
@@ -3497,7 +3497,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 9, 2025</p>
+      <p class="date">March 11, 2025</p>
     </div>
   </div>
   
@@ -3752,7 +3752,7 @@ Figure 2: A summary of the possible scenarios associated with testing the null 
 <li>For example, in the above simulation, we have 10000-100 = 9900 true null hypotheses and 483 false positives (Type I errors) at <span class="math inline">\(\alpha = 0.05\)</span>.</li>
 <li>Conclusion:
 <ul>
-<li>Using a p-value threshold of <span class="math inline">\(\alpha\)</span> for one test means the chance of a false positive is controlled at <span class="math inline">\(\alpha\)</span>.</li>
+<li>Using a p-value threshold of <span class="math inline">\(\alpha\)</span> for one test means the chance of a false positive is controlled at <span class="math inline">\(\alpha\)</span></li>
 <li>If you perform <span class="math inline">\(m\)</span> (e.g., 10000) tests, the chance of having at least one false positive increases.</li>
 <li>More tests lead to a higher overall risk of incorrectly rejecting a true null hypothesis.</li>
 </ul></li>
@@ -3776,17 +3776,21 @@ Figure 3: A summary of the results of testing m null hypotheses. A given null h
 </div>
 <p><span class="math display">\[
 \text{FWER} = P(\text{at least one Type I error}) = P(V \geq 1) = 1 - P(V = 0)
-\]</span> - A strategy of rejecting any null hypothesis for which the p-value is below <span class="math inline">\(\alpha\)</span> (i.e. controlling the Type I error for each null hypothesis at level <span class="math inline">\(\alpha\)</span>) leads to a FWER of <span class="math display">\[\begin{align*}
+\]</span></p>
+<ul>
+<li><p>A strategy of rejecting any null hypothesis for which the p-value is below <span class="math inline">\(\alpha\)</span> (i.e. controlling the Type I error for each null hypothesis at level <span class="math inline">\(\alpha\)</span>) leads to a FWER of <span class="math display">\[\begin{align*}
 \text{FWER} &amp; = 1 - P(V = 0) \\
 &amp; = 1- P(\text{do not fasely reject any null hypothese}) \\
 &amp; = 1- P(\cap_{j=1}^m \text{do not fasely reject any null hypothese } H_{0j})
-\end{align*}\]</span></p>
-<ul>
-<li>If we make the additional (rather strong) assumptions that the <span class="math inline">\(m\)</span> tests are independent and that all <span class="math inline">\(m\)</span> null hypotheses are true, then</li>
+\end{align*}\]</span></p></li>
+<li><p>If we make the additional (rather strong) assumptions that the <span class="math inline">\(m\)</span> tests are independent and that all <span class="math inline">\(m\)</span> null hypotheses are true, then</p></li>
 </ul>
 <p><span class="math display">\[
 \text{FWER} = 1- \Pi_{j=1}^m(1-\alpha) = 1 - (1 - \alpha)^m
-\]</span> - For example, if we have <span class="math inline">\(m = 10000\)</span> tests and we control the Type I error rate at <span class="math inline">\(\alpha = 0.05\)</span> for each test, then the FWER is <span class="math inline">\(1 - (1 - 0.05)^{10000} \approx 1\)</span>.</p>
+\]</span></p>
+<ul>
+<li>For example, if we have <span class="math inline">\(m = 10000\)</span> tests and we control the Type I error rate at <span class="math inline">\(\alpha = 0.05\)</span> for each test, then the FWER is <span class="math inline">\(1 - (1 - 0.05)^{10000} \approx 1\)</span>.</li>
+</ul>
 <div id="fig-pvalue" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pvalue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -3888,9 +3892,10 @@ Figure 4: The family-wise error rate, as a function of the number of hypotheses
 </ul>
 <p><span class="math display">\[
 \text{FWER} = P(\text{at least one Type I error}) = P(\cup_{j=1}^m A_j) \leq \sum_{j=1}^m P(A_j) = m \alpha
-\]</span> - Therefore, if we control the Type I error for each null hypothesis at level <span class="math inline">\(\alpha/m\)</span>, then the FWER is controlled at level <span class="math inline">\(\alpha\)</span>.</p>
+\]</span></p>
 <ul>
-<li>The Bonferroni correction is very conservative, especially when <span class="math inline">\(m\)</span> is large. But it is very widely used because it is simple and easy to understand.</li>
+<li><p>Therefore, if we control the Type I error for each null hypothesis at level <span class="math inline">\(\alpha/m\)</span>, then the FWER is controlled at level <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p>The Bonferroni correction is very conservative, especially when <span class="math inline">\(m\)</span> is large. But it is very widely used because it is simple and easy to understand.</p></li>
 </ul>
 </section>
 <section id="holms-method" class="level3" data-number="4.2">
@@ -3898,12 +3903,13 @@ Figure 4: The family-wise error rate, as a function of the number of hypotheses
 <ul>
 <li><p><strong>Holm’s method</strong> is a step-down procedure that is less conservative than the Bonferroni correction.</p></li>
 <li><p>Suppose we have <span class="math inline">\(m\)</span> p-values, <span class="math inline">\(p_{(1)}, \ldots, p_{(m)}\)</span>, where <span class="math inline">\(p_{(1)} \leq \ldots \leq p_{(m)}\)</span>.</p></li>
-<li><p>For <span class="math inline">\(j = 1, \ldots, m\)</span>, let <span class="math inline">\(p_{(j)}^*\)</span> denote the <span class="math inline">\(j\)</span>th smallest p-value. Then the Holm-adjusted p-values are given by</p></li>
+<li><p>Define:</p></li>
 </ul>
 <p><span class="math display">\[
-p_{(j)}^* = \min((m-j+1) p_{(j)}, 1)
-\]</span> - We reject the null hypothesis <span class="math inline">\(H_{0j}\)</span> if <span class="math inline">\(p_{(j)} \leq p_{(j)}^*\)</span>.</p>
+L = \min\left\{j: p_{(j)} &gt; \frac{\alpha}{m+1-j}\right\}
+\]</span></p>
 <ul>
+<li><p>Then Holm’s method rejects the null hypothesis <span class="math inline">\(H_{0j}\)</span> if <span class="math inline">\(p_{j} \leq L\)</span>.</p></li>
 <li><p>Holm’s method is more powerful than the Bonferroni correction, but still controls the FWER.</p></li>
 <li><p>For example, for the <code>Fund</code> dataset, we can use Holm’s method to adjust the p-values. We ordered p-values in ascending order,</p></li>
 </ul>

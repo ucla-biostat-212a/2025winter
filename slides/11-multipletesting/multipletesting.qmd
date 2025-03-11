@@ -198,7 +198,7 @@ table(decision, truth) %>%
 - This leads to many false positives (Type I errors).
 - For example, in the above simulation, we have 10000-100 = 9900 true null hypotheses and 483 false positives (Type I errors) at $\alpha = 0.05$.
 - Conclusion: 
-  + Using a p-value threshold of $\alpha$ for one test means the chance of a false positive is controlled at $\alpha$.
+  + Using a p-value threshold of $\alpha$ for one test means the chance of a false positive is controlled at $\alpha$
   + If you perform $m$ (e.g., 10000) tests, the chance of having at least one false positive increases.
   + More tests lead to a higher overall risk of incorrectly rejecting a true null hypothesis.
 
@@ -223,6 +223,7 @@ are the numbers of null hypotheses rejected and not rejected, respectively.
 $$
 \text{FWER} = P(\text{at least one Type I error}) = P(V \geq 1) = 1 - P(V = 0)
 $$
+
 - A strategy of rejecting any null hypothesis for which the p-value is below $\alpha$ (i.e. controlling the Type I error for each null hypothesis at level $\alpha$) leads
 to a FWER of
 \begin{align*}
@@ -237,6 +238,7 @@ to a FWER of
 $$
 \text{FWER} = 1- \Pi_{j=1}^m(1-\alpha) = 1 - (1 - \alpha)^m
 $$
+
 - For example, if we have $m = 10000$ tests and we control the Type I error rate at $\alpha = 0.05$ for each test, then the FWER is $1 - (1 - 0.05)^{10000} \approx 1$.
 
 ::: {#fig-pvalue}
@@ -291,6 +293,7 @@ Fund %>%
 $$
 \text{FWER} = P(\text{at least one Type I error}) = P(\cup_{j=1}^m A_j) \leq \sum_{j=1}^m P(A_j) = m \alpha
 $$
+
 - Therefore, if we control the Type I error for each null hypothesis at level $\alpha/m$, then the FWER is controlled at level $\alpha$.
 
 - The Bonferroni correction is very conservative, especially when $m$ is large. But it is very widely used because it is simple and easy to understand.
@@ -301,12 +304,13 @@ $$
 
 - Suppose we have $m$ p-values, $p_{(1)}, \ldots, p_{(m)}$, where $p_{(1)} \leq \ldots \leq p_{(m)}$.
 
-- For $j = 1, \ldots, m$, let $p_{(j)}^*$ denote the $j$th smallest p-value. Then the Holm-adjusted p-values are given by
+- Define: 
 
 $$
-p_{(j)}^* = \min((m-j+1) p_{(j)}, 1)
+L = \min\left\{j: p_{(j)} > \frac{\alpha}{m+1-j}\right\}
 $$
-- We reject the null hypothesis $H_{0j}$ if $p_{(j)} \leq p_{(j)}^*$.
+
+- Then Holm's method rejects the null hypothesis $H_{0j}$ if $p_{j} \leq L$.
 
 - Holm's method is more powerful than the Bonferroni correction, but still controls the FWER.
 
