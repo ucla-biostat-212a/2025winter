@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Jin Zhou @ UCLA">
-<meta name="dcterms.date" content="2025-03-08">
+<meta name="dcterms.date" content="2025-03-09">
 
 <title>Multiple Testing (ISL 13)</title>
 <style>
@@ -3497,7 +3497,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 8, 2025</p>
+      <p class="date">March 9, 2025</p>
     </div>
   </div>
   
@@ -3776,9 +3776,11 @@ Figure 3: A summary of the results of testing m null hypotheses. A given null h
 </div>
 <p><span class="math display">\[
 \text{FWER} = P(\text{at least one Type I error}) = P(V \geq 1) = 1 - P(V = 0)
-\]</span> - A strategy of rejecting any null hypothesis for which the p-value is below <span class="math inline">\(\alpha\)</span> (i.e. controlling the Type I error for each null hypothesis at level <span class="math inline">\(\alpha\)</span>) leads to a FWER of <span class="math display">\[
-\text{FWER} = 1 - P(V = 0) = 1- P(\text{do not fasely reject any null hypothese}) = 1- P(\cap_{j=1}^m \text{do not fasely reject any null hypothese } H_{0j})
-\]</span></p>
+\]</span> - A strategy of rejecting any null hypothesis for which the p-value is below <span class="math inline">\(\alpha\)</span> (i.e. controlling the Type I error for each null hypothesis at level <span class="math inline">\(\alpha\)</span>) leads to a FWER of <span class="math display">\[\begin{align*}
+\text{FWER} &amp; = 1 - P(V = 0) \\
+&amp; = 1- P(\text{do not fasely reject any null hypothese}) \\
+&amp; = 1- P(\cap_{j=1}^m \text{do not fasely reject any null hypothese } H_{0j})
+\end{align*}\]</span></p>
 <ul>
 <li>If we make the additional (rather strong) assumptions that the <span class="math inline">\(m\)</span> tests are independent and that all <span class="math inline">\(m\)</span> null hypotheses are true, then</li>
 </ul>

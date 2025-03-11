@@ -31,6 +31,8 @@ Display system information for reproducibility.
 sessionInfo()
 library(tidyverse)
 library(tidymodels)
+# install.packages("tidytext")
+library(tidytext)
 ```
 
 
