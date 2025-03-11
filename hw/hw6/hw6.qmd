@@ -70,7 +70,7 @@ The [`NYSE.csv`](https://raw.githubusercontent.com/ucla-biostat-212a/2024winter/
 ```{r}
 # Read in NYSE data from url
 
-url = "https://raw.githubusercontent.com/ucla-biostat-212a/2024winter/master/slides/data/NYSE.csv"
+url = "https://raw.githubusercontent.com/ucla-biostat-212a/2025winter/master/slides/data/NYSE.csv"
 NYSE <- read_csv(url)
 
 NYSE
@@ -149,19 +149,19 @@ known as an **order-$L$ autoregression** model or **AR($L$)**.
 
 - Tune AR(5) with elastic net (lasso + ridge) regularization using all 3 features on the training data, and evaluate the test performance. 
 
-- Hint: [Workflow: Lasso](https://ucla-biostat-212a.github.io/2024winter/slides/06-modelselection/workflow_lasso.html) is a good starting point.
+- Hint: [Workflow: Lasso](https://ucla-biostat-212a.github.io/2025winter/slides/06-modelselection/workflow_lasso.html) is a good starting point.
 
 ### Random forest forecaster (30pts)
 
 - Use the same features as in AR($L$) for the random forest. Tune the random forest and evaluate the test performance.
 
-- Hint: [Workflow: Random Forest for Prediction](https://ucla-biostat-212a.github.io/2024winter/slides/08-tree/workflow_rf_reg.html) is a good starting point.
+- Hint: [Workflow: Random Forest for Prediction](https://ucla-biostat-212a.github.io/2025winter/slides/08-tree/workflow_rf_reg.html) is a good starting point.
 
 ### Boosting forecaster (30pts)
 
 - Use the same features as in AR($L$) for the boosting. Tune the boosting algorithm and evaluate the test performance.
 
-- Hint: [Workflow: Boosting tree for Prediction](https://ucla-biostat-212a.github.io/2024winter/slides/08-tree/workflow_boosting_reg.html) is a good starting point.
+- Hint: [Workflow: Boosting tree for Prediction](https://ucla-biostat-212a.github.io/2025winter/slides/08-tree/workflow_boosting_reg.html) is a good starting point.
 
 
 ### Summary (30pts)

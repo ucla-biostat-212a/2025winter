@@ -3326,7 +3326,7 @@ Figure 1: Historical trading statistics from the New York Stock Exchange. Daily
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in NYSE data from url</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">=</span> <span class="st">&quot;https://raw.githubusercontent.com/ucla-biostat-212a/2024winter/master/slides/data/NYSE.csv&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">=</span> <span class="st">&quot;https://raw.githubusercontent.com/ucla-biostat-212a/2025winter/master/slides/data/NYSE.csv&quot;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>NYSE <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>NYSE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3429,21 +3429,21 @@ y = \begin{pmatrix} v_{L+1} \\ v_{L+2} \\ v_{L+3} \\ \vdots \\ v_T \end{pmatrix}
 \hat v_t = \hat \beta_0 + \hat \beta_1 v_{t-1} + \hat \beta_2 v_{t-2} + \cdots + \hat \beta_L v_{t-L},
 \]</span> known as an <strong>order-<span class="math inline">\(L\)</span> autoregression</strong> model or <strong>AR(<span class="math inline">\(L\)</span>)</strong>.</p></li>
 <li><p>Tune AR(5) with elastic net (lasso + ridge) regularization using all 3 features on the training data, and evaluate the test performance.</p></li>
-<li><p>Hint: <a href="https://ucla-biostat-212a.github.io/2024winter/slides/06-modelselection/workflow_lasso.html">Workflow: Lasso</a> is a good starting point.</p></li>
+<li><p>Hint: <a href="https://ucla-biostat-212a.github.io/2025winter/slides/06-modelselection/workflow_lasso.html">Workflow: Lasso</a> is a good starting point.</p></li>
 </ul>
 </section>
 <section id="random-forest-forecaster-30pts" class="level3" data-number="1.4">
 <h3 data-number="1.4" class="anchored" data-anchor-id="random-forest-forecaster-30pts"><span class="header-section-number">1.4</span> Random forest forecaster (30pts)</h3>
 <ul>
 <li><p>Use the same features as in AR(<span class="math inline">\(L\)</span>) for the random forest. Tune the random forest and evaluate the test performance.</p></li>
-<li><p>Hint: <a href="https://ucla-biostat-212a.github.io/2024winter/slides/08-tree/workflow_rf_reg.html">Workflow: Random Forest for Prediction</a> is a good starting point.</p></li>
+<li><p>Hint: <a href="https://ucla-biostat-212a.github.io/2025winter/slides/08-tree/workflow_rf_reg.html">Workflow: Random Forest for Prediction</a> is a good starting point.</p></li>
 </ul>
 </section>
 <section id="boosting-forecaster-30pts" class="level3" data-number="1.5">
 <h3 data-number="1.5" class="anchored" data-anchor-id="boosting-forecaster-30pts"><span class="header-section-number">1.5</span> Boosting forecaster (30pts)</h3>
 <ul>
 <li><p>Use the same features as in AR(<span class="math inline">\(L\)</span>) for the boosting. Tune the boosting algorithm and evaluate the test performance.</p></li>
-<li><p>Hint: <a href="https://ucla-biostat-212a.github.io/2024winter/slides/08-tree/workflow_boosting_reg.html">Workflow: Boosting tree for Prediction</a> is a good starting point.</p></li>
+<li><p>Hint: <a href="https://ucla-biostat-212a.github.io/2025winter/slides/08-tree/workflow_boosting_reg.html">Workflow: Boosting tree for Prediction</a> is a good starting point.</p></li>
 </ul>
 </section>
 <section id="summary-30pts" class="level3" data-number="1.6">
