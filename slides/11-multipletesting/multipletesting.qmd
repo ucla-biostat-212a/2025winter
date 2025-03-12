@@ -449,3 +449,7 @@ rejected (right); the corresponding p-values are shown in blue.
 - The Holm procedure also uses a data-dependent threshold, similar to BH.
 
 ## Summary
+
+- Active line of research, esp., in genomics, neuroscience, and other fields with high-dimensional data.
+- [knockoffs](https://web.stanford.edu/group/candes/knockoffs/)
+
